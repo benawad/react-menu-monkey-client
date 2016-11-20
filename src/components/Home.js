@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import RecipeList from './RecipeList';
+
+import { Input, Divider } from 'semantic-ui-react'
 
 class Home extends Component {
   render() {
     return (
-      <h1>Yo boys!</h1>
+      <div>
+        <Input fluid placeholder='Search...' />
+        <Divider />
+        <RecipeList {...this.props} /> 
+      </div>
     );
   }
 }

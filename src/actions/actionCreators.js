@@ -1,6 +1,5 @@
-export function hi(i) {
+export function recentRecipes() {
   return {
-    type: 'HI',
-    i
+    type: 'RECENT_RECIPES_REQUESTED'
   }
 }
