@@ -9,6 +9,7 @@ function mapStateToProps(state) {
     recipes: state.recipes,
     succSignup: state.signup,
     succLogin: state.login,
+    succAddRecipe: state.addRecipe,
   }
 }
 

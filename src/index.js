@@ -6,6 +6,7 @@ import Home from './components/Home';
 import SingleRecipe from './components/SingleRecipe';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
+import AddRecipe from './components/AddRecipe';
 
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
@@ -20,6 +21,7 @@ const router = (
         <Route path="/view/:recipeId" component={SingleRecipe}></Route>
         <Route path="/login" component={LoginPage}></Route>
         <Route path="/signup" component={SignupPage}></Route>
+        <Route path="/recipes/add" component={AddRecipe}></Route>
       </Route>
     </Router>
   </Provider>

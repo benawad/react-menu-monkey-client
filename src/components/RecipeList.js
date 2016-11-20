@@ -22,7 +22,7 @@ class RecipeList extends Component {
         image={recipe.imageURL}
         header={recipe.name}
         meta='Step one'
-        onClick={this.recipeClick.bind(null, recipe.id)}
+        onClick={this.recipeClick.bind(null, recipe._id)}
         description={recipe.steps[0]}
         />
     );

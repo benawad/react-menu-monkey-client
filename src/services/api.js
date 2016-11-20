@@ -1,6 +1,10 @@
 export function getRecentRecipes(app) {
   const recipes = app.service('recipes');
-  return recipes.get().then((data, err) => data.data);
+  return recipes.find(
+    {
+      query: {'$sort': {'createdAt': -1}}
+    }
+  ).then((data, err) => data.data);
 }
 
 export function signup(app, username, password) {
@@ -18,5 +22,10 @@ export function login(app, username, password) {
   }).catch(function(error){
     console.error('Error authenticating!', error);
   });
+}
+
+export function createRecipe(app, name, steps, imageURL) {
+  const recipes = app.service('recipes');
+  return recipes.create({name, steps, imageURL}).then((data, err) => data);
 }
 

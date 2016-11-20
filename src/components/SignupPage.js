@@ -16,7 +16,7 @@ class SignupPage extends Component {
     this.setState({ username: '', password: '' });
   }
 
-  componentWillUpdate(nextProps, nextState){
+  componentWillUpdate(nextProps){
     if (nextProps && nextProps.succSignup) {
       nextProps.finishSignup();
       browserHistory.push('login');

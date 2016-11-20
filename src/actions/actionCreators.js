@@ -25,3 +25,24 @@ export function login(username, password) {
     password
   }
 }
+
+export function finishLogin() {
+  return {
+    type: 'LOGIN_FINISHED',
+  }
+}
+
+export function addRecipe(name, steps, imageURL) {
+  return {
+    type: 'ADD_RECIPE_REQUESTED',
+    name,
+    steps,
+    imageURL
+  }
+}
+
+export function finishAddRecipe() {
+  return {
+    type: 'ADD_RECIPE_FINISHED',
+  }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { Button, Form } from 'semantic-ui-react'
 
 class LoginPage extends Component {
@@ -13,6 +14,13 @@ class LoginPage extends Component {
     this.props.login(this.state.username, this.state.password); 
     e.preventDefault();
     this.setState({ username: '', password: '' });
+  }
+
+  componentWillUpdate(nextProps){
+    if (nextProps && nextProps.succLogin) {
+      nextProps.finishLogin();
+      browserHistory.push('');
+    }
   }
 
   render() {
