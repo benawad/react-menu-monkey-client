@@ -9,14 +9,24 @@ import rootReducer from './reducers/index';
 
 import { recentRecipes } from './actions/actionCreators.js';
 
+import superagent from 'superagent';
+import feathers from 'feathers-client';
+import rest from 'feathers-rest/client';
+
 const defaultState = {
 };
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(rootReducer, defaultState, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(mySaga)
+const host = 'http://localhost:3030';
+const app = feathers()
+  .configure(rest(host).superagent(superagent))
+  .configure(feathers.hooks())
+  .configure(feathers.authentication({ storage: window.localStorage }));
+
+sagaMiddleware.run(mySaga, app)
 
 store.dispatch(recentRecipes());
 

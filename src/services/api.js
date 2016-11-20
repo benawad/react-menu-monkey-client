@@ -1,28 +1,14 @@
-import superagent from 'superagent';
-import feathers from 'feathers-client';
-import rest from 'feathers-rest/client';
-
-export const host = 'http://localhost:3030';
-
-export function getRecentRecipes() {
-  const app = feathers()
-  .configure(rest(host).superagent(superagent));
+export function getRecentRecipes(app) {
   const recipes = app.service('recipes');
   return recipes.get().then((data, err) => data.data);
 }
 
-export function signup(username, password) {
-  const app = feathers()
-  .configure(rest(host).superagent(superagent));
+export function signup(app, username, password) {
   const users = app.service('users');
   return users.create({username, password}).then((data, err) => data);
 }
 
-export function login(username, password) {
-  const app = feathers()
-  .configure(rest(host).superagent(superagent))
-  .configure(feathers.hooks())
-  .configure(feathers.authentication({ storage: window.localStorage }));
+export function login(app, username, password) {
   return app.authenticate({
     type: 'local',
     'email': username,

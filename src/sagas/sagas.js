@@ -3,38 +3,39 @@ import { fork, call, put } from 'redux-saga/effects';
 import { getRecentRecipes, signup, login } from '../services/api';
 
 
-function* fetchRecentRecipes() {
-  const recipes = yield call(getRecentRecipes);
+function* fetchRecentRecipes(feathersApp) {
+  const recipes = yield call(getRecentRecipes, feathersApp);
   yield put({type: "RECENT_RECIPES_SUCCEEDED", recipes});
 }
 
 
-function* trySignup(action) {
-  const success = yield call(signup, action.username, action.password);
+function* trySignup(feathersApp, action) {
+  const success = yield call(signup, feathersApp, action.username, action.password);
+  console.log(success);
   yield put({type: "SIGNUP_SUCCEEDED", success});
 }
 
-function* tryLogin(action) {
-  const success = yield call(login, action.username, action.password);
+function* tryLogin(feathersApp, action) {
+  const success = yield call(login, feathersApp, action.username, action.password);
   yield put({type: "LOGIN_SUCCEEDED", success});
 }
 
-function* loginSaga() {
-  yield* takeEvery("LOGIN_REQUESTED", tryLogin);
+function* loginSaga(feathersApp) {
+  yield* takeEvery("LOGIN_REQUESTED", tryLogin, feathersApp);
 }
 
-function* signupSaga() {
-  yield* takeEvery("SIGNUP_REQUESTED", trySignup);
+function* signupSaga(feathersApp) {
+  yield* takeEvery("SIGNUP_REQUESTED", trySignup, feathersApp);
 }
 
-function* recentRecipesSaga() {
-  yield* takeEvery("RECENT_RECIPES_REQUESTED", fetchRecentRecipes);
+function* recentRecipesSaga(feathersApp) {
+  yield* takeEvery("RECENT_RECIPES_REQUESTED", fetchRecentRecipes, feathersApp);
 }
 
-export default function* root() {
+export default function* root(feathersApp) {
   yield [
-    fork(signupSaga),
-    fork(recentRecipesSaga),
-    fork(loginSaga)
+    fork(signupSaga, feathersApp),
+    fork(recentRecipesSaga, feathersApp),
+    fork(loginSaga, feathersApp)
   ]
 }
