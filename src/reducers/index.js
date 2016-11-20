@@ -3,7 +3,8 @@ import { routerReducer } from 'react-router-redux';
 
 import recipes from './recipes';
 import signup from './signup';
+import login from './login';
 
-const rootReducer = combineReducers({signup, recipes, routing: routerReducer});
+const rootReducer = combineReducers({login, signup, recipes, routing: routerReducer});
 
 export default rootReducer;

@@ -18,6 +18,7 @@ class SignupPage extends Component {
 
   componentWillUpdate(nextProps, nextState){
     if (nextProps && nextProps.succSignup) {
+      nextProps.finishSignup();
       browserHistory.push('login');
     }
   }
@@ -33,7 +34,7 @@ class SignupPage extends Component {
           <label>Password</label>
           <input name='password' onChange={(e) => this.setState({password: e.target.value})} value={this.state.password} placeholder='Password' type='password' />
         </Form.Field>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit'>Sign up</Button>
       </Form>
     );
   }

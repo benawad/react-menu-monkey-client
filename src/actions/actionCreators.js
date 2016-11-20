@@ -11,3 +11,17 @@ export function signup(username, password) {
     password
   }
 }
+
+export function finishSignup() {
+  return {
+    type: 'SIGNUP_FINISHED',
+  }
+}
+
+export function login(username, password) {
+  return {
+    type: 'LOGIN_REQUESTED',
+    username,
+    password
+  }
+}

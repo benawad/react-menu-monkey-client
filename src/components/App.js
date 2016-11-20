@@ -7,7 +7,8 @@ import Main from './Main';
 function mapStateToProps(state) {
   return {
     recipes: state.recipes,
-    succSignup: state.signup
+    succSignup: state.signup,
+    succLogin: state.login,
   }
 }
 

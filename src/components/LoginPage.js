@@ -1,47 +1,33 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react'
-import { browserHistory } from 'react-router';
-import { host } from '../services/api';
+import { Button, Form } from 'semantic-ui-react'
 
 class LoginPage extends Component {
 
-  //constructor(props) {
-    //super(props);
-    //this.recipeClick = this.recipeClick.bind(this);
-    //this.RecipeCard = this.RecipeCard.bind(this);
-  //}
+  constructor(props) {
+    super(props);
+    this.state = { username: '', password: '' };
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  //recipeClick(id) {
-    //browserHistory.push(`view/${id}`);
-  //}
-
-  //RecipeCard(recipe, i) {
-    //return (
-        //<Card
-        //key={i}
-        //centered={true}
-        //image={recipe.imageURL}
-        //header={recipe.name}
-        //meta='Step one'
-        //onClick={this.recipeClick.bind(null, recipe.id)}
-        //description={recipe.steps[0]}
-        ///>
-    //);
-  //}
+  handleSubmit(e) {
+    this.props.login(this.state.username, this.state.password); 
+    e.preventDefault();
+    this.setState({ username: '', password: '' });
+  }
 
   render() {
     return (
-      <form method="post" action={`${host}/auth/local`}>
-        <fieldset>
-          <input type="email" name="email" placeholder="email"/>
-        </fieldset>
-        <fieldset>
-          <input type="password" name="password" placeholder="password"/>
-        </fieldset>
-        <button type="submit" >
-          Login
-        </button>
-      </form>
+      <Form onSubmit={this.handleSubmit} >
+        <Form.Field>
+          <label>Email</label>
+          <input name='username' onChange={(e) => this.setState({username: e.target.value})} value={this.state.username} placeholder='Email' />
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
+          <input name='password' onChange={(e) => this.setState({password: e.target.value})} value={this.state.password} placeholder='Password' type='password' />
+        </Form.Field>
+        <Button type='submit'>Login</Button>
+      </Form>
     );
   }
 }
