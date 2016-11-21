@@ -15,6 +15,7 @@ class AddRecipe extends Component {
   componentWillUpdate(nextProps){
     if (nextProps && nextProps.succAddRecipe) {
       nextProps.finishAddRecipe();
+      this.props.recentRecipes();
       browserHistory.push('');
     }
   }

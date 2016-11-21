@@ -25,7 +25,9 @@ export function login(app, username, password) {
 }
 
 export function createRecipe(app, name, steps, imageURL) {
-  const recipes = app.service('recipes');
-  return recipes.create({name, steps, imageURL}).then((data, err) => data);
+  return app.authenticate().then(() => {
+    const recipes = app.service('recipes');
+    return recipes.create({name, steps, imageURL}).then((data, err) => data);
+  });
 }
 

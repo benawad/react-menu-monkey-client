@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "feathers-client": "^1.7.2",
+    "feathers-localstorage": "^1.0.0",
     "feathers-rest": "^1.5.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
