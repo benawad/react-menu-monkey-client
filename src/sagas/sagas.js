@@ -38,7 +38,7 @@ function* addRecipe(feathersApp, action) {
   const resp = yield call(createRecipe, feathersApp, action.name, action.description, action.ingredients, action.imageURL);
   console.log(resp);
   yield put({type: "ADD_RECIPE_SUCCEEDED"});
-  yield browserHistory.push('');
+  yield browserHistory.push(`view/${resp._id}`);
 }
 
 function* addRecipesSaga(feathersApp) {

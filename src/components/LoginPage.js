@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 import { Button, Form } from 'semantic-ui-react'
 
 class LoginPage extends Component {
