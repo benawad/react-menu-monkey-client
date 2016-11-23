@@ -37,3 +37,15 @@ export function checkIfLoggedIn(app) {
 export function logout(app) {
   return app.logout();
 }
+
+export function fetchRecipe(app, id) {
+  const recipes = app.service('recipes');
+  return recipes.find(
+    {
+      query: {
+        '$limit': 1,
+        '_id': id
+      }
+    }
+  ).then((data, err) => data.data);
+}

@@ -59,3 +59,10 @@ export function logout() {
     type: 'LOGOUT_REQUESTED',
   } 
 }
+
+export function fetchRecipe(id) {
+  return {
+    type: 'RECIPE_FETCH_REQUESTED',
+    id
+  } 
+}

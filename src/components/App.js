@@ -11,6 +11,7 @@ function mapStateToProps(state) {
     succLogin: state.login,
     succAddRecipe: state.addRecipe,
     user: state.checkIfLoggedIn,
+    currRecipe: state.currRecipe,
   }
 }
 
