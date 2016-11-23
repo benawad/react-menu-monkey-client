@@ -40,7 +40,6 @@ class NavBar extends Component {
 
   render() {
     const currUser = this.props.user.hasOwnProperty('data');
-    console.log(currUser);
     return (
       <Menu>
         <Menu.Item name='browse' active={'a' === 'browse'}>
