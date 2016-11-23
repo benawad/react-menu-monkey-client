@@ -7,8 +7,6 @@ import mySaga from './sagas/sagas'
 
 import rootReducer from './reducers/index';
 
-import { addApp } from './actions/actionCreators.js';
-
 import superagent from 'superagent';
 import feathers from 'feathers-client';
 import rest from 'feathers-rest/client';

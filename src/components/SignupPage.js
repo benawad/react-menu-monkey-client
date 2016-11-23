@@ -16,13 +16,6 @@ class SignupPage extends Component {
     this.setState({ username: '', password: '' });
   }
 
-  componentWillUpdate(nextProps){
-    if (nextProps && nextProps.succSignup) {
-      nextProps.finishSignup();
-      browserHistory.push('login');
-    }
-  }
-
   render() {
     return (
       <Form onSubmit={this.handleSubmit} >

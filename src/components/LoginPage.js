@@ -11,16 +11,9 @@ class LoginPage extends Component {
   }
 
   handleSubmit(e) {
-    this.props.login(this.state.username, this.state.password); 
+    this.props.login(this.state.username, this.state.password, this.props.location.query.next || ''); 
     e.preventDefault();
     this.setState({ username: '', password: '' });
-  }
-
-  componentWillUpdate(nextProps){
-    if (nextProps && nextProps.succLogin) {
-      nextProps.finishLogin();
-      browserHistory.push('');
-    }
   }
 
   render() {

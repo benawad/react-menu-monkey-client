@@ -13,6 +13,7 @@ import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
 import store, { history, app } from './store';
 import { authGood } from './actions/actionCreators';
+import { requireAuthentication } from './components/Auth';
 
 
 const router = (
@@ -23,8 +24,8 @@ const router = (
         <Route path="/view/:recipeId" component={SingleRecipe}></Route>
         <Route path="/login" component={LoginPage}></Route>
         <Route path="/signup" component={SignupPage}></Route>
-        <Route path="/recipes/add" component={AddRecipe}></Route>
-        <Route path="/profile/recipes" component={MyRecipes}></Route>
+        <Route path="/recipes/add" component={requireAuthentication(AddRecipe)}></Route>
+        <Route path="/profile/recipes" component={requireAuthentication(MyRecipes)}></Route>
       </Route>
     </Router>
   </Provider>

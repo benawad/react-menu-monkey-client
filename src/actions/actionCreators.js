@@ -18,11 +18,12 @@ export function finishSignup() {
   }
 }
 
-export function login(username, password) {
+export function login(username, password, next) {
   return {
     type: 'LOGIN_REQUESTED',
     username,
-    password
+    password,
+    next
   }
 }
 

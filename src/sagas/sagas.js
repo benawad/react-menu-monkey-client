@@ -1,6 +1,7 @@
 import { takeEvery } from 'redux-saga';
 import { fork, call, put } from 'redux-saga/effects';
 import { fetchMyRecipes, fetchRecipe, logout, createRecipe, getRecentRecipes, signup, login } from '../services/api';
+import { browserHistory } from 'react-router';
 
 
 function* fetchRecentRecipes(feathersApp) {
@@ -12,11 +13,13 @@ function* trySignup(feathersApp, action) {
   const success = yield call(signup, feathersApp, action.username, action.password);
   console.log(success);
   yield put({type: "SIGNUP_SUCCEEDED", success});
+  yield browserHistory.push('login');
 }
 
 function* tryLogin(feathersApp, action) {
   const user = yield call(login, feathersApp, action.username, action.password);
   yield put({type: "LOGIN_SUCCEEDED", user});
+  yield browserHistory.push(action.next);
 }
 
 function* loginSaga(feathersApp) {
@@ -35,6 +38,7 @@ function* addRecipe(feathersApp, action) {
   const resp = yield call(createRecipe, feathersApp, action.name, action.description, action.ingredients, action.imageURL);
   console.log(resp);
   yield put({type: "ADD_RECIPE_SUCCEEDED"});
+  yield browserHistory.push('');
 }
 
 function* addRecipesSaga(feathersApp) {

@@ -13,7 +13,7 @@ class NavBar extends Component {
   loggedIn() {
     return (
      <Menu.Menu position='right'>
-       <Menu.Item name='user'>
+       <Menu.Item name='user' onClick={() => browserHistory.push('profile/recipes')}>
         {this.props.user.data.email}
        </Menu.Item>
 
@@ -42,12 +42,8 @@ class NavBar extends Component {
     const currUser = this.props.user.hasOwnProperty('data');
     return (
       <Menu>
-        <Menu.Item name='browse' active={'a' === 'browse'}>
-          Browse
-        </Menu.Item>
-
-        <Menu.Item name='submit' active={'a' === 'submit'}>
-          Submit
+        <Menu.Item name='addRecipe' onClick={() => browserHistory.push('recipes/add')}>
+          Add Recipe
         </Menu.Item>
 
         {currUser ? this.loggedIn() : this.loggedOut()}
