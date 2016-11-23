@@ -5,7 +5,7 @@ class SingleRecipe extends Component {
   render() {
     const { recipeId } = this.props.params;
     const i = this.props.recipes.findIndex((recipe) => recipe._id === recipeId);
-    if (i == -1) {
+    if (i === -1) {
       console.log(recipeId);
       console.log(i);
       return (<h1>crap</h1>);

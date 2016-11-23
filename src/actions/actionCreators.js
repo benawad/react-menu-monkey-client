@@ -32,11 +32,12 @@ export function finishLogin() {
   }
 }
 
-export function addRecipe(name, steps, imageURL) {
+export function addRecipe(name, description, ingredients, imageURL) {
   return {
     type: 'ADD_RECIPE_REQUESTED',
     name,
-    steps,
+    description,
+    ingredients,
     imageURL
   }
 }
@@ -45,4 +46,16 @@ export function finishAddRecipe() {
   return {
     type: 'ADD_RECIPE_FINISHED',
   }
+}
+
+export function checkIfLoggedIn() {
+  return {
+    type: 'CHECK_LOGIN_REQUESTED',
+  }
+}
+
+export function logout() {
+  return {
+    type: 'LOGOUT_REQUESTED',
+  } 
 }

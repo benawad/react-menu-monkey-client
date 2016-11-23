@@ -7,7 +7,7 @@ import mySaga from './sagas/sagas'
 
 import rootReducer from './reducers/index';
 
-import { recentRecipes } from './actions/actionCreators.js';
+import { recentRecipes, checkIfLoggedIn } from './actions/actionCreators.js';
 
 import superagent from 'superagent';
 import feathers from 'feathers-client';
@@ -30,6 +30,7 @@ const app = feathers()
 sagaMiddleware.run(mySaga, app)
 
 store.dispatch(recentRecipes());
+store.dispatch(checkIfLoggedIn());
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

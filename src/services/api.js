@@ -17,17 +17,23 @@ export function login(app, username, password) {
     type: 'local',
     'email': username,
     'password': password
-  }).then(function(result){
-    console.log('Authenticated!', result);
-  }).catch(function(error){
-    console.error('Error authenticating!', error);
-  });
+  }).then((resp) => resp).catch(() => {});
 }
 
-export function createRecipe(app, name, steps, imageURL) {
+export function createRecipe(app, name, description, items, imageURL) {
+  let ingredients = {};
+  items.forEach((i) => ingredients[i] = 1);
   return app.authenticate().then(() => {
     const recipes = app.service('recipes');
-    return recipes.create({name, steps, imageURL}).then((data, err) => data);
+    return recipes.create({name, description, ingredients, imageURL}).then((data, err) => data);
   });
 }
 
+export function checkIfLoggedIn(app) {
+  return app.authenticate()
+    .then((resp) => resp, () => ({}));
+}
+
+export function logout(app) {
+  return app.logout();
+}

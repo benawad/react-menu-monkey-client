@@ -23,7 +23,7 @@ class RecipeList extends Component {
         header={recipe.name}
         meta='Step one'
         onClick={this.recipeClick.bind(null, recipe._id)}
-        description={recipe.steps[0]}
+        description={recipe.description}
         />
     );
   }
