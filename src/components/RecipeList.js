@@ -4,6 +4,12 @@ import { browserHistory } from 'react-router';
 import RecipeCard from './RecipeCard';
 
 class RecipeList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.recentRecipes();
+  }
+
   render() {
     return (
       <Card.Group itemsPerRow={5}>

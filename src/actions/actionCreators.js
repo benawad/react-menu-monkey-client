@@ -48,9 +48,10 @@ export function finishAddRecipe() {
   }
 }
 
-export function checkIfLoggedIn() {
+export function authGood(user) {
   return {
-    type: 'CHECK_LOGIN_REQUESTED',
+    type: 'AUTH_GOOD',
+    user
   }
 }
 
@@ -63,6 +64,13 @@ export function logout() {
 export function fetchRecipe(id) {
   return {
     type: 'RECIPE_FETCH_REQUESTED',
+    id
+  } 
+}
+
+export function fetchMyRecipes(id) {
+  return {
+    type: 'MY_RECIPE_FETCH_REQUESTED',
     id
   } 
 }

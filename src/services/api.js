@@ -29,11 +29,6 @@ export function createRecipe(app, name, description, items, imageURL) {
   });
 }
 
-export function checkIfLoggedIn(app) {
-  return app.authenticate()
-    .then((resp) => resp, () => ({}));
-}
-
 export function logout(app) {
   return app.logout();
 }
@@ -45,6 +40,17 @@ export function fetchRecipe(app, id) {
       query: {
         '$limit': 1,
         '_id': id
+      }
+    }
+  ).then((data, err) => data.data);
+}
+
+export function fetchMyRecipes(app, id) {
+  const recipes = app.service('recipes');
+  return recipes.find(
+    {
+      query: {
+        'ownerId': id
       }
     }
   ).then((data, err) => data.data);

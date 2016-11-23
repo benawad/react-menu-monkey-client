@@ -1,6 +1,7 @@
 function checkIfLoggedIn(state = {}, action) {
+  console.log(action);
   switch (action.type) {
-    case 'CHECK_LOGIN_DONE':
+    case 'AUTH_GOOD':
       return action.user;
     case 'LOGOUT_DONE':
       return {};

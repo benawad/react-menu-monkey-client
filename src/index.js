@@ -11,7 +11,8 @@ import MyRecipes from './components/MyRecipes';
 
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
-import store, { history } from './store';
+import store, { history, app } from './store';
+import { authGood } from './actions/actionCreators';
 
 
 const router = (
@@ -29,7 +30,15 @@ const router = (
   </Provider>
 )
 
-ReactDOM.render(
-  router,
-  document.getElementById('root')
-);
+app.authenticate().then((user) => {
+  store.dispatch(authGood(user));
+  ReactDOM.render(
+    router,
+    document.getElementById('root')
+  );
+}, () => {
+  ReactDOM.render(
+    router,
+    document.getElementById('root')
+  );
+});

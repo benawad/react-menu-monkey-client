@@ -7,7 +7,8 @@ import signup from './signup';
 import login from './login';
 import checkIfLoggedIn from './checkLogin';
 import currRecipe from './currRecipe';
+import myRecipes from './myRecipes';
 
-const rootReducer = combineReducers({currRecipe, checkIfLoggedIn, addRecipe, login, signup, recipes, routing: routerReducer});
+const rootReducer = combineReducers({myRecipes, currRecipe, checkIfLoggedIn, addRecipe, login, signup, recipes, routing: routerReducer});
 
 export default rootReducer;

@@ -12,6 +12,7 @@ function mapStateToProps(state) {
     succAddRecipe: state.addRecipe,
     user: state.checkIfLoggedIn,
     currRecipe: state.currRecipe,
+    myRecipes: state.myRecipes,
   }
 }
 
