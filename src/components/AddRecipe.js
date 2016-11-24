@@ -80,7 +80,7 @@ class AddRecipe extends Component {
         </Form.Field>
         <Form.Field>
           <label>Description</label>
-          <Form.TextArea value={this.state.ingredients} name='description' onChange={this.handleDescriptionChange} placeholder='Description...' />
+          <Form.TextArea value={this.state.description} name='description' onChange={this.handleDescriptionChange} placeholder='Description...' />
         </Form.Field>
         <Message
           error

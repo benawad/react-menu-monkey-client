@@ -20,9 +20,9 @@ class RecipeCard extends Component {
         centered={true}
         image={recipe.imageURL}
         header={recipe.name}
-        meta='Step one'
-        onClick={this.recipeClick.bind(null, recipe._id)}
-        description={recipe.description}
+        meta='Description'
+        onClick={() => this.recipeClick(recipe._id)}
+        description={recipe.description.substring(0, 100) + '...'}
         />
     );
   }

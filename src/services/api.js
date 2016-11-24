@@ -7,9 +7,9 @@ export function getRecentRecipes(app) {
   ).then((data, err) => data.data);
 }
 
-export function signup(app, username, password) {
+export function signup(app, email, password) {
   const users = app.service('users');
-  return users.create({username, password}).then((data, err) => data);
+  return users.create({email, password}).then((data, err) => data);
 }
 
 export function login(app, username, password) {
@@ -17,12 +17,16 @@ export function login(app, username, password) {
     type: 'local',
     'email': username,
     'password': password
-  }).then((resp) => resp).catch(() => {});
+  }).then((resp) => {
+    console.log(resp);
+    return resp;
+  }).catch((err) => {
+    console.log(err);
+    return {};
+  });
 }
 
-export function createRecipe(app, name, description, items, imageURL) {
-  let ingredients = {};
-  items.forEach((i) => ingredients[i] = 1);
+export function createRecipe(app, name, description, ingredients, imageURL) {
   return app.authenticate().then(() => {
     const recipes = app.service('recipes');
     return recipes.create({name, description, ingredients, imageURL}).then((data, err) => data);

@@ -11,9 +11,7 @@ import superagent from 'superagent';
 import feathers from 'feathers-client';
 import rest from 'feathers-rest/client';
 
-
-const defaultState = {
-};
+const defaultState = {};
 
 const sagaMiddleware = createSagaMiddleware();
 

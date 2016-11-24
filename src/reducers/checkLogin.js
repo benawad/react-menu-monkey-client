@@ -1,5 +1,4 @@
 function checkIfLoggedIn(state = {}, action) {
-  console.log(action);
   switch (action.type) {
     case 'AUTH_GOOD':
       return action.user;
