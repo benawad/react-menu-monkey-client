@@ -13,15 +13,6 @@ class AddRecipe extends Component {
     this.handleIngredientChange = this.handleIngredientChange.bind(this);
   }
 
-  componentWillUpdate(nextProps){
-    if (nextProps && nextProps.succAddRecipe) {
-      nextProps.finishAddRecipe();
-      this.props.recentRecipes();
-      browserHistory.push('');
-    }
-  }
-
-
   handleImageChange(e) {
     e.preventDefault();
 
