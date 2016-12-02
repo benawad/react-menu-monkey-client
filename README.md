@@ -13,3 +13,7 @@ Start [server](https://github.com/benawad/feathersjs-menu-monkey-backend) then:
 `npm install`
 
 `npm start`
+
+# Learn how it was made
+
+Check out the [YouTube tutorial](https://www.youtube.com/watch?v=nR0kxhbI09I).
