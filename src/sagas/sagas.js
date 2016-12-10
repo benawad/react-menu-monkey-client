@@ -13,7 +13,7 @@ function* trySignup(feathersApp, action) {
   const success = yield call(signup, feathersApp, action.username, action.password);
   console.log(success);
   yield put({type: "SIGNUP_SUCCEEDED", success});
-  yield browserHistory.push('login');
+  yield browserHistory.push('/login');
 }
 
 function* tryLogin(feathersApp, action) {
@@ -38,7 +38,7 @@ function* addRecipe(feathersApp, action) {
   const resp = yield call(createRecipe, feathersApp, action.name, action.description, action.ingredients, action.imageURL);
   console.log(resp);
   yield put({type: "ADD_RECIPE_SUCCEEDED"});
-  yield browserHistory.push(`view/${resp._id}`);
+  yield browserHistory.push(`/view/${resp._id}`);
 }
 
 function* addRecipesSaga(feathersApp) {
