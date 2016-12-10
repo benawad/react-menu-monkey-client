@@ -11,7 +11,7 @@ class MyRecipes extends Component {
   render() {
     return (
       <Card.Group itemsPerRow={5}>
-        {this.props.myRecipes.map((recipe, i) => <RecipeCard {...this.props} key={i} recipe={recipe}/>)}
+        {this.props.myRecipes.map((recipe, i) => RecipeCard(recipe, i))}
       </Card.Group>
     );
   }
