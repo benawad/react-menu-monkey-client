@@ -2,7 +2,7 @@
 
 Frontend for a recipe box website
 
-![Front page screenshot](http://imgur.com/a/iAkW9)
+![Front page screenshot](http://i.imgur.com/4G6gOAL.png)
 
 #How to run it
 
