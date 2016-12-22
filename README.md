@@ -2,6 +2,8 @@
 
 Frontend for a recipe box website
 
+![Front page screenshot](http://imgur.com/a/iAkW9)
+
 #How to run it
 
 Start [server](https://github.com/benawad/feathersjs-menu-monkey-backend) then:
