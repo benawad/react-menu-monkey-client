@@ -4,34 +4,6 @@ export function recentRecipes() {
   };
 }
 
-export function signup(username, password) {
-  return {
-    type: 'SIGNUP_REQUESTED',
-    username,
-    password,
-  };
-}
-
-export function finishSignup() {
-  return {
-    type: 'SIGNUP_FINISHED',
-  };
-}
-
-export function login(username, password, next) {
-  return {
-    type: 'LOGIN_REQUESTED',
-    username,
-    password,
-    next,
-  };
-}
-
-export function finishLogin() {
-  return {
-    type: 'LOGIN_FINISHED',
-  };
-}
 
 export function addRecipe(name, description, ingredients, imageURL) {
   return {
@@ -46,19 +18,6 @@ export function addRecipe(name, description, ingredients, imageURL) {
 export function finishAddRecipe() {
   return {
     type: 'ADD_RECIPE_FINISHED',
-  };
-}
-
-export function authGood(user) {
-  return {
-    type: 'AUTH_GOOD',
-    user,
-  };
-}
-
-export function logout() {
-  return {
-    type: 'LOGOUT_REQUESTED',
   };
 }
 
