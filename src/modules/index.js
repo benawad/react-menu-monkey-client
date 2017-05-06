@@ -5,6 +5,8 @@ import feathers from 'feathers-client';
 import rest from 'feathers-rest/client';
 import { fork } from 'redux-saga/effects';
 
+import { currRecipe, myRecipes, recipes } from './recipe/reducers';
+import * as recipeSagas from './recipe/sagas';
 import { user } from './user/reducers';
 import * as userSagas from './user/sagas';
 
@@ -16,6 +18,9 @@ userSagas = {
 */
 
 export const rootReducer = combineReducers({
+  currRecipe,
+  myRecipes,
+  recipes,
   user,
   routing: routerReducer,
 });
@@ -23,6 +28,7 @@ export const rootReducer = combineReducers({
 export function* rootSaga() {
   yield [
     ...Object.values(userSagas),
+    ...Object.values(recipeSagas),
   ].map(fork);
 }
 
