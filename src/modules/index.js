@@ -22,7 +22,7 @@ export const rootReducer = combineReducers({
   myRecipes,
   recipes,
   user,
-  routing: routerReducer,
+  router: routerReducer,
 });
 
 export function* rootSaga() {

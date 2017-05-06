@@ -1,5 +1,7 @@
 import React from 'react';
-import { Router, Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
+import { ConnectedRouter } from 'react-router-redux';
+
 import { history } from '../store';
 
 import Home from './Home';
@@ -11,12 +13,12 @@ import MyRecipes from './MyRecipes';
 import requireAuthentication from '../components/Auth';
 
 export default () => (
-  <Router history={history}>
-    <IndexRoute component={Home} />
-    <Route path="/view/:recipeId" component={SingleRecipe} />
+  <ConnectedRouter history={history}>
+    <Route path="/" component={Home} />
+    {/*<Route path="/view/:recipeId" component={SingleRecipe} />
     <Route path="/login" component={LoginPage} />
     <Route path="/signup" component={SignupPage} />
     <Route path="/recipes/add" component={requireAuthentication(AddRecipe)} />
-    <Route path="/profile/recipes" component={requireAuthentication(MyRecipes)} />
-  </Router>
+    <Route path="/profile/recipes" component={requireAuthentication(MyRecipes)} />*/}
+  </ConnectedRouter>
 );

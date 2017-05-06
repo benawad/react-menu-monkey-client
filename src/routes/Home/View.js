@@ -3,7 +3,7 @@ import { Divider } from 'semantic-ui-react';
 
 import RecipeList from '../../components/RecipeList';
 
-class Home extends Component {
+export default class Home extends Component {
 
   componentWillMount() {
     this.props.requestRecentRecipes();
@@ -18,5 +18,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;
