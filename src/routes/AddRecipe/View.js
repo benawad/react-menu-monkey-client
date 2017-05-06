@@ -36,12 +36,12 @@ class AddRecipe extends Component {
     } else if (this.state.imagePreviewUrl === undefined) {
       this.setState({ error: true });
     } else {
-      this.props.addRecipe(
+      this.props.addRecipe({
         name,
-        this.state.description,
-        this.state.ingredients.split('\n'),
-        this.state.imagePreviewUrl,
-      );
+        description: this.state.description,
+        ingredients: this.state.ingredients.split('\n'),
+        imageUrl: this.state.imagePreviewUrl,
+      });
     }
     e.preventDefault();
   }

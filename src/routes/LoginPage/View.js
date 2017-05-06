@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 
-class SignupPage extends Component {
+class LoginPage extends Component {
 
   constructor(props) {
     super(props);
@@ -10,7 +10,11 @@ class SignupPage extends Component {
   }
 
   handleSubmit(e) {
-    this.props.signup(this.state.username, this.state.password);
+    this.props.login({
+      email: this.state.username,
+      password: this.state.password,
+      next: this.props.location.query.next || '',
+    });
     e.preventDefault();
     this.setState({ username: '', password: '' });
   }
@@ -26,10 +30,10 @@ class SignupPage extends Component {
           <label>Password</label>
           <input name="password" onChange={e => this.setState({ password: e.target.value })} value={this.state.password} placeholder="Password" type="password" />
         </Form.Field>
-        <Button type="submit">Sign up</Button>
+        <Button type="submit">Login</Button>
       </Form>
     );
   }
 }
 
-export default SignupPage;
+export default LoginPage;

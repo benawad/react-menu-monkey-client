@@ -18,3 +18,4 @@ export const recentRecipesSucceeded = createAction(RECENT_RECIPES_SUCCEEDED);
 export const addRecipeSucceeded = createAction(ADD_RECIPE_SUCCEEDED);
 export const recipeFetchDone = createAction(RECIPE_FETCH_DONE);
 export const myRecipeFetchDone = createAction(MY_RECIPE_FETCH_DONE);
+export const requestAddRecipe = createAction(ADD_RECIPE_REQUESTED);

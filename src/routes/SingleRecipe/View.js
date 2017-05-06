@@ -6,7 +6,7 @@ class SingleRecipe extends Component {
   constructor(props) {
     super(props);
 
-    this.props.fetchRecipe(this.props.params.recipeId);
+    this.props.requestRecipe(this.props.params.recipeId);
   }
 
   render() {

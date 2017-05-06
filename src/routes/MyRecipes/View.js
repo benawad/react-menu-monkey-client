@@ -5,7 +5,7 @@ import RecipeCard from './RecipeCard';
 class MyRecipes extends Component {
   constructor(props) {
     super(props);
-    this.props.fetchMyRecipes(this.props.user.data._id);
+    this.props.requestMyRecipe(this.props.user.data._id);
   }
 
   render() {
