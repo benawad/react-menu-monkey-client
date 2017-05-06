@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu } from 'semantic-ui-react';
 import { browserHistory } from 'react-router';
 
 class NavBar extends Component {
@@ -12,43 +12,43 @@ class NavBar extends Component {
 
   loggedIn() {
     return (
-     <Menu.Menu position='right'>
-       <Menu.Item name='user' onClick={() => browserHistory.push('/profile/recipes')}>
-        {this.props.user.data.email}
-       </Menu.Item>
+      <Menu.Menu position="right">
+        <Menu.Item name="user" onClick={() => browserHistory.push('/profile/recipes')}>
+          {this.props.user.data.email}
+        </Menu.Item>
 
-       <Menu.Item name='logout' onClick={this.props.logout}>
+        <Menu.Item name="logout" onClick={this.props.logout}>
          logout
        </Menu.Item>
-     </Menu.Menu>
-    )
+      </Menu.Menu>
+    );
   }
 
   loggedOut() {
     return (
-     <Menu.Menu position='right'>
-       <Menu.Item name='signup' onClick={() => browserHistory.push('/signup')}>
+      <Menu.Menu position="right">
+        <Menu.Item name="signup" onClick={() => browserHistory.push('/signup')}>
           sign up
        </Menu.Item>
 
-       <Menu.Item name='login' onClick={() => browserHistory.push('/login')}>
+        <Menu.Item name="login" onClick={() => browserHistory.push('/login')}>
          login
        </Menu.Item>
-     </Menu.Menu>
-    )
+      </Menu.Menu>
+    );
   }
 
   render() {
     const currUser = this.props.user.hasOwnProperty('data');
     return (
       <Menu>
-        <Menu.Item name='addRecipe' onClick={() => browserHistory.push('/recipes/add')}>
+        <Menu.Item name="addRecipe" onClick={() => browserHistory.push('/recipes/add')}>
           Add Recipe
         </Menu.Item>
 
         {currUser ? this.loggedIn() : this.loggedOut()}
       </Menu>
-    )
+    );
   }
 }
 

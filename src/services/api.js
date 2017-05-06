@@ -2,21 +2,21 @@ export function getRecentRecipes(app) {
   const recipes = app.service('recipes');
   return recipes.find(
     {
-      query: {'$sort': {'createdAt': -1}}
-    }
+      query: { $sort: { createdAt: -1 } },
+    },
   ).then((data, err) => data.data);
 }
 
 export function signup(app, email, password) {
   const users = app.service('users');
-  return users.create({email, password}).then((data, err) => data);
+  return users.create({ email, password }).then((data, err) => data);
 }
 
 export function login(app, username, password) {
   return app.authenticate({
     type: 'local',
-    'email': username,
-    'password': password
+    email: username,
+    password,
   }).then((resp) => {
     console.log(resp);
     return resp;
@@ -29,7 +29,7 @@ export function login(app, username, password) {
 export function createRecipe(app, name, description, ingredients, imageURL) {
   return app.authenticate().then(() => {
     const recipes = app.service('recipes');
-    return recipes.create({name, description, ingredients, imageURL}).then((data, err) => data);
+    return recipes.create({ name, description, ingredients, imageURL }).then((data, err) => data);
   });
 }
 
@@ -42,10 +42,10 @@ export function fetchRecipe(app, id) {
   return recipes.find(
     {
       query: {
-        '$limit': 1,
-        '_id': id
-      }
-    }
+        $limit: 1,
+        _id: id,
+      },
+    },
   ).then((data, err) => data.data);
 }
 
@@ -54,8 +54,8 @@ export function fetchMyRecipes(app, id) {
   return recipes.find(
     {
       query: {
-        'ownerId': id
-      }
-    }
+        ownerId: id,
+      },
+    },
   ).then((data, err) => data.data);
 }

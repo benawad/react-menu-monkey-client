@@ -10,7 +10,7 @@ function mapStateToProps(state) {
     user: state.checkIfLoggedIn,
     currRecipe: state.currRecipe,
     myRecipes: state.myRecipes,
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {

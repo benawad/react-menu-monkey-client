@@ -1,0 +1,21 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "globals": {
+        "document": true,
+        "describe": true,
+        "expect": true,
+        "it": true,
+        "window": true
+    },
+    "rules": {
+      "react/jsx-filename-extension": 0,
+      "jsx-a11y/label-has-for": 0
+    }
+
+}

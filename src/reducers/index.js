@@ -6,6 +6,6 @@ import checkIfLoggedIn from './checkLogin';
 import currRecipe from './currRecipe';
 import myRecipes from './myRecipes';
 
-const rootReducer = combineReducers({myRecipes, currRecipe, checkIfLoggedIn, recipes, routing: routerReducer});
+const rootReducer = combineReducers({ myRecipes, currRecipe, checkIfLoggedIn, recipes, routing: routerReducer });
 
 export default rootReducer;
