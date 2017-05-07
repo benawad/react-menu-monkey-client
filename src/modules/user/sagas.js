@@ -1,5 +1,4 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
-import { browserHistory } from 'react-router';
 
 import { logout, signup, login } from './api';
 import {
@@ -15,22 +14,24 @@ import {
 function* tryLogin({ payload }) {
   const user = yield call(login, payload);
   yield put(loginSucceeded(user));
-  yield browserHistory.push(payload.next);
+  // yield browserHistory.push(payload.next);
 }
 
 export function* loginSaga() {
-  yield* takeEvery(LOGIN_REQUESTED, tryLogin);
+  yield takeEvery(LOGIN_REQUESTED, tryLogin);
 }
 
-function* trySignup({ payload }) {
-  const success = yield call(signup, payload);
+function* trySignup({ payload: { redirect, data } }) {
+  console.log(data);
+  const success = yield call(signup, data);
   console.log(success);
   yield put(signupSucceeded(success));
-  yield browserHistory.push('/login');
+  redirect();
+  // yield browserHistory.push('/login');
 }
 
 export function* signupSaga() {
-  yield* takeEvery(SIGNUP_REQUESTED, trySignup);
+  yield takeEvery(SIGNUP_REQUESTED, trySignup);
 }
 
 function* callLogout() {
@@ -39,6 +40,6 @@ function* callLogout() {
 }
 
 export function* logoutSaga() {
-  yield* takeEvery(LOGOUT_REQUESTED, callLogout);
+  yield takeEvery(LOGOUT_REQUESTED, callLogout);
 }
 

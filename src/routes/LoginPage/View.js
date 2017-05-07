@@ -11,9 +11,18 @@ class LoginPage extends Component {
 
   handleSubmit(e) {
     this.props.login({
-      email: this.state.username,
-      password: this.state.password,
-      next: this.props.location.query.next || '',
+      redirect: () => {
+        const next = this.props.location.query.next || '';
+        if (next) {
+          this.props.history.push(next);
+        } else {
+          this.props.history.push('/');
+        }
+      },
+      data: {
+        email: this.state.username,
+        password: this.state.password,
+      },
     });
     e.preventDefault();
     this.setState({ username: '', password: '' });

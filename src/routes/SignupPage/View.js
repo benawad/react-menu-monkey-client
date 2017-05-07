@@ -11,8 +11,11 @@ class SignupPage extends Component {
 
   handleSubmit(e) {
     this.props.signup({
-      email: this.state.username,
-      password: this.state.password,
+      redirect: () => this.props.history.push('/login'),
+      data: {
+        email: this.state.username,
+        password: this.state.password,
+      },
     });
     e.preventDefault();
     this.setState({ username: '', password: '' });

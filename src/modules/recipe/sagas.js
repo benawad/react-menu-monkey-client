@@ -1,6 +1,5 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { createRecipe, findRecipes } from './api';
-import { browserHistory } from 'react-router';
 
 import {
   recentRecipesSucceeded,
@@ -19,18 +18,18 @@ function* fetchRecentRecipes({ payload }) {
 }
 
 export function* recentRecipesSaga() {
-  yield* takeEvery(RECENT_RECIPES_REQUESTED, fetchRecentRecipes);
+  yield takeEvery(RECENT_RECIPES_REQUESTED, fetchRecentRecipes);
 }
 
 function* addRecipe({ payload }) {
   const resp = yield call(createRecipe, payload);
   console.log(resp);
   yield put(addRecipeSucceeded());
-  yield browserHistory.push(`/view/${resp._id}`);
+  // yield browserHistory.push(`/view/${resp._id}`);
 }
 
 export function* addRecipesSaga() {
-  yield* takeEvery(ADD_RECIPE_REQUESTED, addRecipe);
+  yield takeEvery(ADD_RECIPE_REQUESTED, addRecipe);
 }
 
 function* callFetchRecipe({ payload }) {
@@ -39,7 +38,7 @@ function* callFetchRecipe({ payload }) {
 }
 
 export function* fetchRecipeSaga() {
-  yield* takeEvery(RECIPE_FETCH_REQUESTED, callFetchRecipe);
+  yield takeEvery(RECIPE_FETCH_REQUESTED, callFetchRecipe);
 }
 
 function* callMyFetchRecipe(feathersApp, { payload }) {
@@ -48,5 +47,5 @@ function* callMyFetchRecipe(feathersApp, { payload }) {
 }
 
 export function* fetchMyRecipeSaga() {
-  yield* takeEvery(MY_RECIPE_FETCH_REQUESTED, callMyFetchRecipe);
+  yield takeEvery(MY_RECIPE_FETCH_REQUESTED, callMyFetchRecipe);
 }
