@@ -1,38 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { bindActionCreators } from 'redux';
+
+import { app } from '../modules';
+import { requestAuth } from '../modules/user/actions';
 
 export default function requireAuthentication(Component) {
   class AuthenticatedComponent extends React.Component {
 
     componentWillMount() {
-      this.checkAuth();
-    }
-
-    componentWillReceiveProps(nextProps) {
-      this.checkAuth();
-    }
-
-    checkAuth() {
-      if (!this.props.user.hasOwnProperty('data')) {
+      this.props.requestAuth(() => {
         const redirectAfterLogin = this.props.location.pathname;
-        browserHistory.push(`/login?next=${redirectAfterLogin}`);
-      }
+        this.props.history.push(`/login?next=${redirectAfterLogin}`);
+      });
     }
 
     render() {
       return (
         <div>
-          {this.props.user.hasOwnProperty('data') === true
-                        ? <Component {...this.props} />
-                        : null
-                    }
+          { Object.values(this.props.user).length ?
+            <Component {...this.props} /> :
+            <h1>...loading</h1>
+          }
         </div>
       );
     }
     }
 
-  const mapStateToProps = state => ({});
+  const mapStateToProps = state => ({
+    user: state.user,
+  });
 
-  return connect(mapStateToProps)(AuthenticatedComponent);
+  function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+      requestAuth,
+    }, dispatch);
+  }
+
+  return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent);
 }

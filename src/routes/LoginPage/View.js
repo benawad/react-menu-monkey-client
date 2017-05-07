@@ -5,6 +5,7 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = { username: '', password: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -12,7 +13,7 @@ class LoginPage extends Component {
   handleSubmit(e) {
     this.props.login({
       redirect: () => {
-        const next = this.props.location.query.next || '';
+        const next = (this.props.location.query || {}).next || '';
         if (next) {
           this.props.history.push(next);
         } else {

@@ -1,19 +1,22 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import { logout, signup, login } from './api';
+import { logout, signup, login, auth } from './api';
 import {
   loginSucceeded,
   logoutDone,
   signupSucceeded,
+  authGood,
   LOGIN_REQUESTED,
   SIGNUP_REQUESTED,
   LOGOUT_REQUESTED,
+  REQUEST_AUTH,
 } from './actions';
 
 
-function* tryLogin({ payload }) {
-  const user = yield call(login, payload);
+function* tryLogin({ payload: { data, redirect } }) {
+  const user = yield call(login, data);
   yield put(loginSucceeded(user));
+  redirect();
   // yield browserHistory.push(payload.next);
 }
 
@@ -41,5 +44,18 @@ function* callLogout() {
 
 export function* logoutSaga() {
   yield takeEvery(LOGOUT_REQUESTED, callLogout);
+}
+
+function* callAuth({ payload }) {
+  const user = yield call(auth);
+  console.log(user);
+  yield put(authGood(user));
+  if (!Object.values(user).length) {
+    payload();
+  }
+}
+
+export function* authSaga() {
+  yield takeEvery(REQUEST_AUTH, callAuth);
 }
 

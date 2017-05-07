@@ -30,3 +30,15 @@ export async function login(payload) {
 export function logout() {
   return app.logout();
 }
+
+export async function auth() {
+  try {
+    const token = localStorage.getItem('feathers-jwt');
+    const payload = await app.passport.verifyJWT(token);
+    const user = await usersService.get(payload.userId);
+    return user;
+  } catch (err) {
+    console.log(err);
+    return {};
+  }
+}

@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import superagent from 'superagent';
 import feathers from 'feathers-client';
 import rest from 'feathers-rest/client';
+import auth from 'feathers-authentication-client';
 import { fork, all } from 'redux-saga/effects';
 
 import { currRecipe, myRecipes, recipes } from './recipe/reducers';
@@ -36,7 +37,7 @@ const host = 'http://localhost:3030';
 export const app = feathers()
   .configure(rest(host).superagent(superagent))
   .configure(feathers.hooks())
-  .configure(feathers.authentication({ storage: window.localStorage }));
+  .configure(auth({ storage: window.localStorage }));
 
 export const usersService = app.service('users');
 export const recipesService = app.service('recipes');

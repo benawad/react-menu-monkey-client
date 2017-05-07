@@ -9,6 +9,7 @@ export const LOGOUT_REQUESTED = 'LOGOUT_REQUESTED';
 export const AUTH_GOOD = 'AUTH_GOOD';
 export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
 export const LOGOUT_DONE = 'LOGOUT_DONE';
+export const REQUEST_AUTH = 'REQUEST_AUTH';
 
 export const signup = createAction(SIGNUP_REQUESTED);
 export const login = createAction(LOGIN_REQUESTED);
@@ -17,3 +18,4 @@ export const logout = createAction(LOGOUT_REQUESTED);
 export const loginSucceeded = createAction(LOGIN_SUCCEEDED);
 export const logoutDone = createAction(LOGOUT_DONE);
 export const signupSucceeded = createAction(SIGNUP_SUCCEEDED);
+export const requestAuth = createAction(REQUEST_AUTH);
