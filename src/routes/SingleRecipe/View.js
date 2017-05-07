@@ -4,13 +4,7 @@ import { Header, Image, Segment, Container } from 'semantic-ui-react';
 class SingleRecipe extends Component {
 
   componentWillMount() {
-    console.log(this.props.match.params.recipeId);
-    this.props.requestRecipe({
-      query: {
-        $limit: 1,
-        _id: this.props.match.params.recipeId,
-      },
-    });
+    this.props.requestRecipe(this.props.match.params.recipeId);
   }
 
   render() {
@@ -22,7 +16,7 @@ class SingleRecipe extends Component {
     return (
       <div>
         <Header as="h1" textAlign="center" >{recipe.name}</Header>
-        <Image src={recipe.imageURL} size="medium" centered />
+        <Image src={recipe.imageUrl} size="medium" centered />
         <Segment.Group>
           {recipe.ingredients.map((ing, i) => <Segment key={i}>{ing}</Segment>)}
         </Segment.Group>

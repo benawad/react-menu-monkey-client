@@ -7,7 +7,7 @@ import {
 
 export const currRecipe = handleAction(recipeFetchDone, {
   next(state, { payload }) {
-    return payload.length ? payload[0] : {};
+    return payload;
   },
 }, {});
 

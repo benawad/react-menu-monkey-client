@@ -5,7 +5,11 @@ import RecipeCard from '../../components/RecipeCard';
 class MyRecipes extends Component {
 
   componentWillMount() {
-    this.props.requestMyRecipe(this.props.user.data._id);
+    this.props.requestMyRecipe({ 
+      query: {
+        ownerId: this.props.user._id,
+      },
+    });
   }
 
   render() {

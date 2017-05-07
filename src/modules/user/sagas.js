@@ -6,6 +6,7 @@ import {
   logoutDone,
   signupSucceeded,
   authGood,
+  requestAuth,
   LOGIN_REQUESTED,
   SIGNUP_REQUESTED,
   LOGOUT_REQUESTED,
@@ -16,6 +17,7 @@ import {
 function* tryLogin({ payload: { data, redirect } }) {
   const user = yield call(login, data);
   yield put(loginSucceeded(user));
+  yield put(requestAuth());
   redirect();
   // yield browserHistory.push(payload.next);
 }

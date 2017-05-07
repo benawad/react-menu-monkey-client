@@ -9,6 +9,15 @@ export async function findRecipes(payload) {
   }
 }
 
+export async function getRecipe(payload) {
+  try {
+    return await recipesService.get(payload);
+  } catch (err) {
+    console.log(err);
+    return {};
+  }
+}
+
 export async function createRecipe(payload) {
   try {
     return await recipesService.create(payload);
