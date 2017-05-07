@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
-export function requireAuthentication(Component) {
+export default function requireAuthentication(Component) {
   class AuthenticatedComponent extends React.Component {
 
     componentWillMount() {

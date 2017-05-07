@@ -13,7 +13,7 @@ export default class Home extends Component {
     return (
       <div>
         <Divider />
-        <RecipeList {...this.props} />
+        <RecipeList recipes={this.props.recipes} />
       </div>
     );
   }
