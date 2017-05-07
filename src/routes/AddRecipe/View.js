@@ -36,7 +36,7 @@ class AddRecipe extends Component {
     } else if (this.state.imagePreviewUrl === undefined) {
       this.setState({ error: true });
     } else {
-      this.props.addRecipe({
+      this.props.requestAddRecipe({
         name,
         description: this.state.description,
         ingredients: this.state.ingredients.split('\n'),

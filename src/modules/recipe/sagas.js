@@ -14,7 +14,7 @@ import {
 
 function* fetchRecentRecipes({ payload }) {
   const recipes = yield call(findRecipes, payload);
-  yield put(recentRecipesSucceeded(recipes));
+  yield put(recentRecipesSucceeded(recipes.data));
 }
 
 export function* recentRecipesSaga() {

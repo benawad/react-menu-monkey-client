@@ -2,10 +2,10 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import { browserHistory, Link } from 'react-router';
 
-const RecipeCard = ({ _id, name, imageURL, description }, i) => (
+const RecipeCard = ({ _id, name, imageUrl, description }, i) => (
   <Card
     centered
-    image={imageURL}
+    image={imageUrl}
     header={name}
     meta="Description"
     description={`${description.substring(0, 100)}...`}
