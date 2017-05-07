@@ -23,7 +23,7 @@ export default () => (
       </Header>
       <NavBar />
       <Route exact path="/" component={Home} />
-      <Route path="/view/:recipeId" component={SingleRecipe} />
+      <Route path="/view/:recipeId" render={props => (<SingleRecipe {...props} />)} />
       <Route path="/login" render={props => (<LoginPage {...props} />)} />
       <Route path="/signup" render={props => (<SignupPage {...props} />)} />
       <Route path="/recipes/add" component={requireAuthentication(AddRecipe)} />

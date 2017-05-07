@@ -6,7 +6,9 @@ import RecipeList from '../../components/RecipeList';
 export default class Home extends Component {
 
   componentWillMount() {
-    this.props.requestRecentRecipes();
+    this.props.requestRecentRecipes({
+      query: { $sort: { createdAt: -1 } },
+    });
   }
 
   render() {

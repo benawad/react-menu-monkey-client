@@ -3,7 +3,7 @@ import { createRecipe, findRecipes } from './api';
 
 import {
   recentRecipesSucceeded,
-  addRecipeSucceeded,
+  fetchRecipeDone,
   recipeFetchDone,
   myRecipeFetchDone,
   RECENT_RECIPES_REQUESTED,
@@ -21,11 +21,11 @@ export function* recentRecipesSaga() {
   yield takeEvery(RECENT_RECIPES_REQUESTED, fetchRecentRecipes);
 }
 
-function* addRecipe({ payload }) {
-  const resp = yield call(createRecipe, payload);
-  console.log(resp);
-  yield put(addRecipeSucceeded());
-  // yield browserHistory.push(`/view/${resp._id}`);
+function* addRecipe({ payload: { redirect, data } }) {
+  const recipe = yield call(createRecipe, data);
+  console.log(recipe);
+  yield put(fetchRecipeDone(recipe));
+  redirect(recipe._id);
 }
 
 export function* addRecipesSaga() {
@@ -34,7 +34,8 @@ export function* addRecipesSaga() {
 
 function* callFetchRecipe({ payload }) {
   const recipe = yield call(findRecipes, payload);
-  yield put(recipeFetchDone(recipe));
+  console.log(recipe);
+  yield put(recipeFetchDone(recipe.data));
 }
 
 export function* fetchRecipeSaga() {

@@ -3,10 +3,14 @@ import { Header, Image, Segment, Container } from 'semantic-ui-react';
 
 class SingleRecipe extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.props.requestRecipe(this.props.params.recipeId);
+  componentWillMount() {
+    console.log(this.props.match.params.recipeId);
+    this.props.requestRecipe({
+      query: {
+        $limit: 1,
+        _id: this.props.match.params.recipeId,
+      },
+    });
   }
 
   render() {

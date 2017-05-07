@@ -37,10 +37,13 @@ class AddRecipe extends Component {
       this.setState({ error: true });
     } else {
       this.props.requestAddRecipe({
-        name,
-        description: this.state.description,
-        ingredients: this.state.ingredients.split('\n'),
-        imageUrl: this.state.imagePreviewUrl,
+        redirect: id => this.props.history.push(`/view/${id}`),
+        data: {
+          name,
+          description: this.state.description,
+          ingredients: this.state.ingredients.split('\n'),
+          imageUrl: this.state.imagePreviewUrl,
+        },
       });
     }
     e.preventDefault();
