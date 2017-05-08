@@ -22,7 +22,7 @@ export default () => (
       <Header as="h1" textAlign="center">
         <Link to="/">Menu Monkey</Link>
       </Header>
-      <NavBar />
+      <Route path="/" render={props => (<NavBar {...props} />)} />
       <Route exact path="/" component={getUser(Home)} />
       <Route path="/view/:recipeId" render={props => (<SingleRecipe {...props} />)} />
       <Route path="/login" render={props => (<LoginPage {...props} />)} />

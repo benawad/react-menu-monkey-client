@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from 'semantic-ui-react';
-import RecipeCard from '../../components/RecipeCard';
+import RecipeList from '../../components/RecipeList';
 
 class MyRecipes extends Component {
 
@@ -14,9 +14,7 @@ class MyRecipes extends Component {
 
   render() {
     return (
-      <Card.Group itemsPerRow={5}>
-        {this.props.myRecipes.map((recipe, i) => RecipeCard(recipe, i))}
-      </Card.Group>
+      <RecipeList recipes={this.props.myRecipes} />
     );
   }
 }

@@ -4,6 +4,6 @@ import RecipeCard from './RecipeCard';
 
 export default ({ recipes }) => (
   <Card.Group itemsPerRow={5}>
-    {recipes.map((recipe, i) => RecipeCard(recipe, i))}
+    {recipes.map((recipe, i) => RecipeCard(recipe))}
   </Card.Group>
 );
