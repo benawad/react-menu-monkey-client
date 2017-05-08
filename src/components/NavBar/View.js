@@ -11,7 +11,9 @@ const loggedIn = (email, logout) => (
     </Menu.Item>
 
     <Menu.Item name="logout" onClick={logout}>
-      logout
+      <Link to="/">
+        logout
+      </Link>
     </Menu.Item>
   </Menu.Menu>
 );

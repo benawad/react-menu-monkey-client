@@ -13,7 +13,8 @@ class LoginPage extends Component {
   handleSubmit(e) {
     this.props.login({
       redirect: () => {
-        const next = (this.props.location.query || {}).next || '';
+        const params = new URLSearchParams(this.props.location.search);
+        const next = params.get('next');
         if (next) {
           this.props.history.push(next);
         } else {

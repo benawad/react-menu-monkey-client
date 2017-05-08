@@ -13,6 +13,7 @@ import SignupPage from './SignupPage';
 import AddRecipe from './AddRecipe';
 import MyRecipes from './MyRecipes';
 import requireAuthentication from '../components/Auth';
+import getUser from '../components/GetUser';
 import NavBar from '../components/NavBar';
 
 export default () => (
@@ -22,7 +23,7 @@ export default () => (
         <Link to="/">Menu Monkey</Link>
       </Header>
       <NavBar />
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={getUser(Home)} />
       <Route path="/view/:recipeId" render={props => (<SingleRecipe {...props} />)} />
       <Route path="/login" render={props => (<LoginPage {...props} />)} />
       <Route path="/signup" render={props => (<SignupPage {...props} />)} />
