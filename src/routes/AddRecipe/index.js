@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import View from './View';
-import { requestAddRecipe } from '../../modules/recipe/actions';
+import { requestCreateRecipe } from '../../modules/recipe/actions';
 
 function mapStateToProps() {
   return {
@@ -11,7 +11,7 @@ function mapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    requestAddRecipe,
+    requestCreateRecipe,
   }, dispatch);
 }
 

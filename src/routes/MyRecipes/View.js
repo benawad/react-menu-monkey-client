@@ -5,7 +5,7 @@ import RecipeList from '../../components/RecipeList';
 class MyRecipes extends Component {
 
   componentWillMount() {
-    this.props.requestMyRecipe({ 
+    this.props.requestMyRecipes({ 
       query: {
         ownerId: this.props.user._id,
       },

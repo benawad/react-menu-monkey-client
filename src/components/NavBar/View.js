@@ -1,13 +1,13 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 
-const loggedIn = (email, logout, history) => (
+const loggedIn = (email, requestLogout, history) => (
   <Menu.Menu position="right">
     <Menu.Item name="user" onClick={() => history.push('/profile/recipes')}>
       {email}
     </Menu.Item>
 
-    <Menu.Item name="logout" onClick={() => { logout(); history.push('/'); }}>
+    <Menu.Item name="logout" onClick={() => { requestLogout(); history.push('/'); }}>
       logout
     </Menu.Item>
   </Menu.Menu>
@@ -25,12 +25,12 @@ const loggedOut = history => (
   </Menu.Menu>
 );
 
-export default ({ user, logout, history }) => (
+export default ({ user, requestLogout, history }) => (
   <Menu>
     <Menu.Item name="addRecipe" onClick={() => history.push('/recipes/add')}>
       Add Recipe
     </Menu.Item>
 
-    { Object.values(user).length ? loggedIn(user.email, logout, history) : loggedOut(history) }
+    { Object.values(user).length ? loggedIn(user.email, requestLogout, history) : loggedOut(history) }
   </Menu>
 );

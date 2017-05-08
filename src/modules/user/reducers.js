@@ -1,11 +1,10 @@
 import { handleAction, combineActions } from 'redux-actions';
 import {
-  authGood,
-  logoutDone,
-  loginSucceeded,
+  receiveAuth,
+  receiveLogout,
 } from './actions';
 
-export const user = handleAction(combineActions(authGood, logoutDone, loginSucceeded), {
+export const user = handleAction(combineActions(receiveAuth, receiveLogout), {
   next(state, action) {
     return action.payload;
   },

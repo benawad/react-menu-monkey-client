@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Form, Message } from 'semantic-ui-react';
-import { browserHistory } from 'react-router';
 
-class AddRecipe extends Component {
+export default class AddRecipe extends Component {
 
   constructor(props) {
     super(props);
     this.state = { nameError: false, error: false, name: '', ingredients: '', description: '' };
-    this.handleImageChange = this.handleImageChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleIngredientChange = this.handleIngredientChange.bind(this);
   }
 
-  handleImageChange(e) {
+  handleImageChange = (e) => {
     e.preventDefault();
 
     const reader = new FileReader();
@@ -29,14 +24,14 @@ class AddRecipe extends Component {
     reader.readAsDataURL(file);
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     const name = this.state.name.trim();
     if (name === '') {
       this.setState({ nameError: true, error: true });
     } else if (this.state.imagePreviewUrl === undefined) {
       this.setState({ error: true });
     } else {
-      this.props.requestAddRecipe({
+      this.props.requestCreateRecipe({
         redirect: id => this.props.history.push(`/view/${id}`),
         data: {
           name,
@@ -49,11 +44,11 @@ class AddRecipe extends Component {
     e.preventDefault();
   }
 
-  handleDescriptionChange(e) {
+  handleDescriptionChange = (e) => {
     this.setState({ description: e.target.value });
   }
 
-  handleIngredientChange(e) {
+  handleIngredientChange = (e) => {
     this.setState({ ingredients: e.target.value });
   }
 
@@ -86,5 +81,3 @@ class AddRecipe extends Component {
     );
   }
 }
-
-export default AddRecipe;

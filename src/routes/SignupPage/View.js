@@ -6,11 +6,10 @@ class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.signup({
+  handleSubmit = (e) => {
+    this.props.requestSignup({
       redirect: () => this.props.history.push('/login'),
       data: {
         email: this.state.username,

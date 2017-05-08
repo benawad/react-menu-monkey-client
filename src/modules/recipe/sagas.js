@@ -2,50 +2,50 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 import { createRecipe, findRecipes, getRecipe } from './api';
 
 import {
-  recentRecipesSucceeded,
-  recipeFetchDone,
-  myRecipeFetchDone,
-  RECENT_RECIPES_REQUESTED,
-  ADD_RECIPE_REQUESTED,
-  RECIPE_FETCH_REQUESTED,
-  MY_RECIPE_FETCH_REQUESTED,
+  receiveRecentRecipes,
+  receiveRecipe,
+  receiveMyRecipes,
+  REQUEST_RECIPE,
+  REQUEST_RECENT_RECIPES,
+  REQUEST_MY_RECIPES,
+  REQUEST_CREATE_RECIPE,
 } from './actions';
 
-function* fetchRecentRecipes({ payload }) {
+function* callRecentRecipes({ payload }) {
   const recipes = yield call(findRecipes, payload);
-  yield put(recentRecipesSucceeded(recipes.data));
+  yield put(receiveRecentRecipes(recipes.data));
 }
 
 export function* recentRecipesSaga() {
-  yield takeEvery(RECENT_RECIPES_REQUESTED, fetchRecentRecipes);
+  yield takeEvery(REQUEST_RECENT_RECIPES, callRecentRecipes);
 }
 
-function* addRecipe({ payload: { redirect, data } }) {
+function* callCreateRecipe({ payload: { redirect, data } }) {
   const recipe = yield call(createRecipe, data);
   console.log(recipe);
   redirect(recipe._id);
 }
 
-export function* addRecipesSaga() {
-  yield takeEvery(ADD_RECIPE_REQUESTED, addRecipe);
+export function* addRecipeSaga() {
+  yield takeEvery(REQUEST_CREATE_RECIPE, callCreateRecipe);
 }
 
-function* callFetchRecipe({ payload }) {
+function* callRecipe({ payload }) {
   const recipe = yield call(getRecipe, payload);
   console.log(recipe);
-  yield put(recipeFetchDone(recipe));
+  yield put(receiveRecipe(recipe));
 }
 
-export function* fetchRecipeSaga() {
-  yield takeEvery(RECIPE_FETCH_REQUESTED, callFetchRecipe);
+export function* recipeSaga() {
+  yield takeEvery(REQUEST_RECIPE, callRecipe);
 }
 
-function* callMyFetchRecipe({ payload }) {
+function* callMyRecipes({ payload }) {
   const myRecipes = yield call(findRecipes, payload);
   console.log(myRecipes);
-  yield put(myRecipeFetchDone(myRecipes.data));
+  yield put(receiveMyRecipes(myRecipes.data));
 }
 
-export function* fetchMyRecipeSaga() {
-  yield takeEvery(MY_RECIPE_FETCH_REQUESTED, callMyFetchRecipe);
+export function* myRecipesSaga() {
+  yield takeEvery(REQUEST_MY_RECIPES, callMyRecipes);
 }

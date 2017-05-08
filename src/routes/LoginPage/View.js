@@ -5,13 +5,11 @@ class LoginPage extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = { username: '', password: '' };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.login({
+  handleSubmit = (e) => {
+    this.props.requestLogin({
       redirect: () => {
         const params = new URLSearchParams(this.props.location.search);
         const next = params.get('next');

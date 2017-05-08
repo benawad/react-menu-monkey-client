@@ -1,21 +1,18 @@
 import { createAction } from 'redux-actions';
+// action       type
+// request*     REQUEST_*
+// receive*     RECEIVE_*
 
-export const SIGNUP_REQUESTED = 'SIGNUP_REQUEST';
-export const SIGNUP_FINISHED = 'SIGNUP_FINISHED';
-export const SIGNUP_SUCCEEDED = 'SIGNUP_SUCCEEDED';
-export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
-export const LOGIN_FINISHED = 'LOGIN_FINISHED';
-export const LOGOUT_REQUESTED = 'LOGOUT_REQUESTED';
-export const AUTH_GOOD = 'AUTH_GOOD';
-export const LOGIN_SUCCEEDED = 'LOGIN_SUCCEEDED';
-export const LOGOUT_DONE = 'LOGOUT_DONE';
+export const REQUEST_SIGNUP = 'REQUEST_SIGNUP';
+export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const REQUEST_LOGOUT = 'REQUEST_LOGOUT';
+export const RECEIVE_LOGOUT = 'RECEIVE_LOGOUT';
 export const REQUEST_AUTH = 'REQUEST_AUTH';
+export const RECEIVE_AUTH = 'RECEIVE_AUTH';
 
-export const signup = createAction(SIGNUP_REQUESTED);
-export const login = createAction(LOGIN_REQUESTED);
-export const authGood = createAction(AUTH_GOOD);
-export const logout = createAction(LOGOUT_REQUESTED);
-export const loginSucceeded = createAction(LOGIN_SUCCEEDED);
-export const logoutDone = createAction(LOGOUT_DONE);
-export const signupSucceeded = createAction(SIGNUP_SUCCEEDED);
+export const requestSignup = createAction(REQUEST_SIGNUP);
+export const requestLogin = createAction(REQUEST_LOGIN);
 export const requestAuth = createAction(REQUEST_AUTH);
+export const requestLogout = createAction(REQUEST_LOGOUT);
+export const receiveLogout = createAction(RECEIVE_LOGOUT);
+export const receiveAuth = createAction(RECEIVE_AUTH);
