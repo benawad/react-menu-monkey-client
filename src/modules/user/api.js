@@ -4,7 +4,6 @@ export async function signup(payload) {
   try {
     return await usersService.create(payload);
   } catch (err) {
-    console.log(err);
     return {};
   }
 }
@@ -22,7 +21,6 @@ export async function login(payload) {
       ...payload,
     });
   } catch (err) {
-    console.log(err);
     return {};
   }
 }
@@ -38,7 +36,6 @@ export async function auth() {
     const user = await usersService.get(payload.userId);
     return user;
   } catch (err) {
-    console.log(err);
     return {};
   }
 }

@@ -5,6 +5,6 @@ import { rootReducer, rootSaga } from './modules';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(rootReducer, {}, applyMiddleware(sagaMiddleware));
+export default createStore(rootReducer, {}, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);

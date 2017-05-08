@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-class SignupPage extends Component {
+export default class SignupPage extends Component {
 
   constructor(props) {
     super(props);
@@ -37,4 +38,13 @@ class SignupPage extends Component {
   }
 }
 
-export default SignupPage;
+SignupPage.defaultProps = {
+  requestSignup: () => ({}),
+};
+
+SignupPage.propTypes = {
+  requestSignup: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

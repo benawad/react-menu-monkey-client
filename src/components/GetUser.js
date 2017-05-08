@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
-import { app } from '../modules';
 import { requestAuth } from '../modules/user/actions';
 
 export default function getUser(Component) {
@@ -19,7 +19,15 @@ export default function getUser(Component) {
     }
  }
 
-  const mapStateToProps = state => ({});
+  AuthenticatedComponent.defaultProps = {
+    requestAuth: () => ({}),
+  };
+
+  AuthenticatedComponent.propTypes = {
+    requestAuth: PropTypes.func,
+  };
+
+  const mapStateToProps = () => ({});
 
   function mapDispatchToProps(dispatch) {
     return bindActionCreators({

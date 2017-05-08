@@ -12,12 +12,13 @@
         "expect": true,
         "it": true,
         "window": true,
+        "FileReader": true,
+        "URLSearchParams": true,
         "localStorage": true
     },
     "rules": {
       "react/jsx-filename-extension": 0,
-      "jsx-a11y/label-has-for": 0,
-      "jsx-a11y/img-has-alt": 0
+      "jsx-a11y/label-has-for": 0
     }
 
 }

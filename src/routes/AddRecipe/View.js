@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, Message } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 export default class AddRecipe extends Component {
 
@@ -81,3 +82,14 @@ export default class AddRecipe extends Component {
     );
   }
 }
+
+AddRecipe.defaultProps = {
+  requestCreateRecipe: () => ({}),
+};
+
+AddRecipe.propTypes = {
+  requestCreateRecipe: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

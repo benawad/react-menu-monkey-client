@@ -23,8 +23,7 @@ export function* loginSaga() {
 }
 
 function* callSignup({ payload: { redirect, data } }) {
-  const success = yield call(signup, data);
-  console.log(success);
+  yield call(signup, data);
   redirect();
 }
 
@@ -43,7 +42,6 @@ export function* logoutSaga() {
 
 function* callAuth({ payload }) {
   const user = yield call(auth);
-  console.log(user);
   yield put(receiveAuth(user));
   if (!Object.values(user).length) {
     payload();

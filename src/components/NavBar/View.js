@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const loggedIn = (email, requestLogout, history) => (
   <Menu.Menu position="right">
@@ -25,12 +26,28 @@ const loggedOut = history => (
   </Menu.Menu>
 );
 
-export default ({ user, requestLogout, history }) => (
+const NavBar = ({ user, requestLogout, history }) => (
   <Menu>
     <Menu.Item name="addRecipe" onClick={() => history.push('/recipes/add')}>
       Add Recipe
     </Menu.Item>
-
-    { Object.values(user).length ? loggedIn(user.email, requestLogout, history) : loggedOut(history) }
+    {
+      Object.values(user).length
+      ? loggedIn(user.email, requestLogout, history)
+      : loggedOut(history)
+    }
   </Menu>
 );
+
+NavBar.propTypes = {
+  user: PropTypes.shape({
+    _id: PropTypes.string,
+    email: PropTypes.string,
+  }),
+  requestLogout: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
+
+export default NavBar;

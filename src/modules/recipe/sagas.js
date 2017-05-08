@@ -22,7 +22,7 @@ export function* recentRecipesSaga() {
 
 function* callCreateRecipe({ payload: { redirect, data } }) {
   const recipe = yield call(createRecipe, data);
-  console.log(recipe);
+  // eslint-disable-next-line
   redirect(recipe._id);
 }
 
@@ -32,7 +32,6 @@ export function* addRecipeSaga() {
 
 function* callRecipe({ payload }) {
   const recipe = yield call(getRecipe, payload);
-  console.log(recipe);
   yield put(receiveRecipe(recipe));
 }
 
@@ -42,7 +41,6 @@ export function* recipeSaga() {
 
 function* callMyRecipes({ payload }) {
   const myRecipes = yield call(findRecipes, payload);
-  console.log(myRecipes);
   yield put(receiveMyRecipes(myRecipes.data));
 }
 
