@@ -11,11 +11,17 @@ import {
   REQUEST_AUTH,
 } from './actions';
 
-
-function* callLogin({ payload: { data, redirect } }) {
-  yield call(login, data);
-  yield put(requestAuth());
-  redirect();
+function* callLogin({ payload: { data, redirect, errorCallback } }) {
+  const response = yield call(login, data);
+  // check for error
+  // if the object is empty there is an error
+  if (!Object.keys(response).length) {
+    errorCallback('Invalid login');
+  } else {
+    // no error, so requestAuth and redirect user
+    yield put(requestAuth());
+    redirect();
+  }
 }
 
 export function* loginSaga() {
@@ -51,4 +57,3 @@ function* callAuth({ payload }) {
 export function* authSaga() {
   yield takeEvery(REQUEST_AUTH, callAuth);
 }
-

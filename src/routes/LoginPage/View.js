@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Message, Button, Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 export default class LoginPage extends Component {
-
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = { username: '', password: '', errorMessage: '' };
   }
 
   handleSubmit = (e) => {
@@ -19,26 +18,44 @@ export default class LoginPage extends Component {
         } else {
           this.props.history.push('/');
         }
+        this.setState({ username: '', password: '' });
       },
       data: {
         email: this.state.username,
         password: this.state.password,
       },
+      errorCallback: errorMessage => this.setState({ errorMessage }),
     });
     e.preventDefault();
-    this.setState({ username: '', password: '' });
-  }
+  };
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit} >
+      <Form onSubmit={this.handleSubmit}>
+        {this.state.errorMessage &&
+          <Message negative>
+            <Message.Header>
+              {this.state.errorMessage}
+            </Message.Header>
+          </Message>}
         <Form.Field>
           <label>Email</label>
-          <input name="username" onChange={e => this.setState({ username: e.target.value })} value={this.state.username} placeholder="Email" />
+          <input
+            name="username"
+            onChange={e => this.setState({ username: e.target.value })}
+            value={this.state.username}
+            placeholder="Email"
+          />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
-          <input name="password" onChange={e => this.setState({ password: e.target.value })} value={this.state.password} placeholder="Password" type="password" />
+          <input
+            name="password"
+            onChange={e => this.setState({ password: e.target.value })}
+            value={this.state.password}
+            placeholder="Password"
+            type="password"
+          />
         </Form.Field>
         <Button type="submit">Login</Button>
       </Form>
